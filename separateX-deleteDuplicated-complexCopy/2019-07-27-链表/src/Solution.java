@@ -63,6 +63,17 @@ public class Solution {
     }
 
     //删除有序链表中的重复结点
+    /*
+    三个引用分别用 黄(prev)、蓝(p1)、红(p2) 三种颜色代表
+    循环（直到 红色的p2 为空）：
+         p1.val = p2.val( 蓝色的p1 所指向的值与 红色的p2 指向的值一样)
+               红色的p2 往后走，直到不相等(p1 != p2)
+               删除 [蓝色的p1，红色的p2) 结点   //包含p1，但不包含p2
+               黄色的prev 不动，蓝色的等于红色的(p1 = p2),红色的p2往后走
+         p1.val != p2.val
+               三个同时往后走(prev  p1  p2)
+
+     */
     public Node deleteDuplicated(Node head) {
         if (head == null) {
             return head;
